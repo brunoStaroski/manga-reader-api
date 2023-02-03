@@ -1,9 +1,9 @@
 const searchService = require('./searchServices/searchService')
 
 const search = async (req, res, next) => {
-    console.log(req.query.nome)
-    if (req.query.nome && req.query.nome !== '') {
-        searchService.search(req.query.nome).then((resolve, reject) => {
+    console.log(req.query.name)
+    if (req.query.name && req.query.name !== '') {
+        searchService.search(req.query.name).then((resolve, reject) => {
             if (reject) {throw reject}
             res.json(resolve);
         })

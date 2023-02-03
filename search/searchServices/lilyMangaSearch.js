@@ -19,15 +19,15 @@ module.exports = {
             const $ = cheerio.load(result.data);
             const searchResults = $('.tab-content-wrap > .c-tabs-item').children();
 
-            let title, image, url, lastChapter, lastUpdatedOn, status;
+            let title, image, url, lastChapter, lastUpdatedOn, status, origin;
             searchResults.each((idx, el) => {
-
                 title = $(el).find('.post-title h3').text().trim();
                 image = $(el).find('.tab-thumb a').find('img').attr('data-src');
                 url = $(el).find('.post-title h3').find('a').attr('href');
                 lastChapter = $(el).find('.latest-chap').find('.chapter').text().trim();
                 lastUpdatedOn = $(el).find('.post-on span').text().trim();
                 status = $(el).find('.mg_status').find('.summary-content').text().trim()
+                origin = 'lilyManga';
 
                 mangas.push({
                     title,
@@ -35,7 +35,8 @@ module.exports = {
                     url,
                     lastChapter,
                     lastUpdatedOn,
-                    status
+                    status,
+                    origin
                 });
 
                 // console.log(idx, title,
